@@ -1,6 +1,6 @@
 # Jimmy Lam
 
-Welcome to my portfolio! I'm **Jimmy**, a **Software Developer** and **UX/UI Designer** based in **Toronto, Canada**. I have a strong background in both development and design, and able to work effectively in cross-functional teams!
+Welcome to my portfolio! I'm **Jimmy**, a **Software Developer** and **UX/UI Designer** based in **Toronto, Canada**. I have a strong background in both development and design, and am able to work effectively in cross-functional teams!
 
 
 ## Skills & Technologies
