@@ -104,7 +104,7 @@
 .arrow {
   display: inline-block;
   font-size: 1rem;
-  transform: rotate(45deg);
+  transform: rotate(0deg);
 }
 
 .roleContainer {

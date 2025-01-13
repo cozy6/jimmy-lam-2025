@@ -4,6 +4,7 @@ import styles from "@/styles/Home.module.css";
 //Components
 import HeaderNav from "../../components/HeaderNav";
 import ProjectsTable from "../../components/ProjectsTable";
+import Footer from "../../components/Footer";
 
 
 export default function Home() {
@@ -30,6 +31,7 @@ export default function Home() {
           <ProjectsTable />
         </section>
       </main>
+      <Footer />
     </>
   );
 }
