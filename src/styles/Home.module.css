@@ -1,17 +1,21 @@
 .page {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
   min-height: 100vh;
   padding: 0 20px;
+  background-color: var(--background);
+  color: var(--foreground);
 }
 
 .centerContent {
   text-align: center;
   display: flex;
   flex-direction: column;
-  max-width: 800px;
-  margin-top: -260px;
+  max-width: 900px;
+  min-height: 100vh;
+  margin: -200px auto 0;
+  justify-content: center;
+  align-items: center;
 }
 
 .name {
@@ -27,8 +31,8 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
-  align-items: center;
   width: 100%;
+  align-items: center;
 }
 
 .role {
@@ -43,11 +47,20 @@
   line-height: 1.2;
   font-weight: 500;
   white-space: nowrap;
+  text-align: center;
+  width: 100%;
 }
 
 .city {
   font-family: 'Nothing', sans-serif;
   font-size: 64px;
+}
+
+.projectsSection {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 100px 0;
 }
 
 @media (max-width: 768px) {

@@ -3,6 +3,7 @@ import styles from "@/styles/Home.module.css";
 
 //Components
 import HeaderNav from "../../components/HeaderNav";
+import ProjectsTable from "../../components/ProjectsTable";
 
 
 export default function Home() {
@@ -25,6 +26,9 @@ export default function Home() {
             <p className={styles.company}>Currently @ Commissary Connect</p>
           </div>
         </div>
+        <section className={styles.projectsSection}>
+          <ProjectsTable />
+        </section>
       </main>
     </>
   );
