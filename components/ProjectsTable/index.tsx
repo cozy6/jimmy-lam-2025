@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import styles from './ProjectsTable.module.css';
 
 interface Project {
@@ -16,10 +16,10 @@ interface Project {
 const placeholderProjects: Project[] = [
   {
     id: 1,
-    name: "Project Alpha",
-    category: "Development",
-    client: "Client Co.",
-    year: 2024,
+    name: "Commissary Connect (NDA)",
+    category: "Mobile/Web Development",
+    client: "Commissary Connect",
+    year: 2025,
     description: "Collaborated with the client team to design and develop a dynamic web application with advanced functionality. Leveraged modern frameworks to create a seamless and responsive user experience, aligning with their vision for digital transformation.",
     tags: ["Development", "Full Stack"],
     websiteUrl: "#",
@@ -27,9 +27,9 @@ const placeholderProjects: Project[] = [
   },
   {
     id: 2,
-    name: "Project Beta",
-    category: "Web design, Development",
-    client: "Beta Industries",
+    name: "Spurt",
+    category: "Web/mobile design, Development",
+    client: "BCIT",
     year: 2024,
     description: "Led the development of a comprehensive digital platform integrating cutting-edge technologies. Created an intuitive interface that enhances user engagement while maintaining high performance standards.",
     tags: ["Web design", "Development"],
@@ -38,10 +38,10 @@ const placeholderProjects: Project[] = [
   },
   {
     id: 3,
-    name: "Project Gamma",
-    category: "Development",
-    client: "Gamma Corp",
-    year: 2023,
+    name: "Orbit",
+    category: "Web design, Development",
+    client: "BCIT",
+    year: 2024,
     description: "Spearheaded the implementation of a scalable solution using modern architecture principles. Focused on delivering a robust platform that exceeds client expectations while ensuring maintainability.",
     tags: ["Development"],
     websiteUrl: "#",
@@ -69,13 +69,12 @@ export default function ProjectsTable() {
         </thead>
         <tbody>
           {placeholderProjects.map((project) => (
-            <>
+            <React.Fragment key={project.id}>
               <tr 
-                key={project.id} 
                 onClick={() => toggleProject(project.id)}
                 className={expandedProject === project.id ? styles.expanded : ''}
               >
-                <td>{project.name}</td>
+                <td className={styles.projectName}>{project.name}</td>
                 <td>{project.category}</td>
                 <td>{project.client}</td>
                 <td>{project.year}</td>
@@ -83,28 +82,28 @@ export default function ProjectsTable() {
               {expandedProject === project.id && (
                 <tr className={styles.expandedContent}>
                   <td colSpan={4}>
-                    <div className={styles.projectDetails}>
-                      <p className={styles.description}>{project.description}</p>
-                      <div className={styles.tags}>
-                        {project.tags.map((tag, index) => (
-                          <span key={index} className={styles.tag}>{tag}</span>
-                        ))}
-                      </div>
-                      <a href={project.websiteUrl} className={styles.websiteButton}>
-                        See website
-                      </a>
-                      <div className={styles.imageGrid}>
-                        {project.images.map((image, index) => (
-                          <div key={index} className={styles.imageContainer}>
-                            <div className={styles.imagePlaceholder} />
-                          </div>
-                        ))}
-                      </div>
+                  <div className={styles.projectDetails}>
+                    <p className={styles.description}>{project.description}</p>
+                    <div className={styles.tags}>
+                      {project.tags.map((tag, index) => (
+                        <span key={index} className={styles.tag}>{tag}</span>
+                      ))}
                     </div>
+                    <a href={project.websiteUrl} className={styles.websiteButton}>
+                      See website
+                    </a>
+                    <div className={styles.imageGrid}>
+                      {project.images.map((image, index) => (
+                        <div key={index} className={styles.imageContainer}>
+                          <div className={styles.imagePlaceholder} />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                   </td>
                 </tr>
               )}
-            </>
+            </React.Fragment>
           ))}
         </tbody>
       </table>

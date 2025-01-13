@@ -29,6 +29,14 @@
   background-color: var(--gray-alpha-300);
 }
 
+.projectName {
+  transition: transform 0.3s ease;
+}
+
+.projectsTable tbody tr:hover .projectName {
+  transform: translateX(10px);
+}
+
 .expanded {
   background-color: var(--gray-alpha-300);
 }
@@ -40,6 +48,18 @@
 
 .projectDetails {
   padding: 2rem 0;
+  animation: slideDown 0.3s ease forwards;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .description {
