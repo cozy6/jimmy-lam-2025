@@ -1,19 +1,63 @@
 .page {
-  --gray-rgb: 0, 0, 0;
-  --gray-alpha-200: rgba(var(--gray-rgb), 0.08);
-  --gray-alpha-100: rgba(var(--gray-rgb), 0.05);
-
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
-
-  display: grid;
-  grid-template-rows: 20px 1fr 20px;
+  display: flex;
   align-items: center;
-  justify-items: center;
-  min-height: 100svh;
-  padding: 80px;
-  gap: 64px;
-  font-family: var(--font-geist-sans);
+  justify-content: center;
+  min-height: 100vh;
+  padding: 0 20px;
+}
+
+.centerContent {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+  margin-top: -260px;
+}
+
+.name {
+  font-family: 'Nothing', sans-serif;
+  font-size: 64px;
+  letter-spacing: -0.em;
+  line-height: 1;
+  font-weight: 500;
+}
+
+.details {
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+  width: 100%;
+}
+
+.role {
+  font-size: 64px;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.location, .company {
+  font-size: 64px;
+  letter-spacing: -0.08em;
+  line-height: 1.2;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.city {
+  font-family: 'Nothing', sans-serif;
+  font-size: 64px;
+}
+
+@media (max-width: 768px) {
+  .name {
+    font-size: 48px;
+  }
+  
+  .role, .location, .company {
+    font-size: 24px;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
