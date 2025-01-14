@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import styles from './ProjectsTable.module.css';
 
 interface Project {
@@ -51,10 +51,31 @@ const placeholderProjects: Project[] = [
 
 export default function ProjectsTable() {
   const [expandedProject, setExpandedProject] = useState<number | null>(null);
+  const [closingProject, setClosingProject] = useState<number | null>(null);
+  const timeoutRef = useRef<NodeJS.Timeout>();
 
   const toggleProject = (projectId: number) => {
-    setExpandedProject(expandedProject === projectId ? null : projectId);
+    if (expandedProject === projectId) {
+      setClosingProject(projectId);
+      setExpandedProject(null);
+      
+      timeoutRef.current = setTimeout(() => {
+        setClosingProject(null);
+      }, 500); // Match this with CSS animation duration
+    } else {
+      setExpandedProject(projectId);
+      setClosingProject(null);
+    }
   };
+
+  useEffect(() => {
+    const cleanup: () => void = () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+    return cleanup;
+  }, []);
 
   return (
     <div className={styles.tableContainer}>
@@ -79,8 +100,8 @@ export default function ProjectsTable() {
                 <td>{project.client}</td>
                 <td>{project.year}</td>
               </tr>
-              {expandedProject === project.id && (
-                <tr className={styles.expandedContent}>
+              {(expandedProject === project.id || closingProject === project.id) && (
+                <tr className={`${styles.expandedContent} ${closingProject === project.id ? styles.closing : ''}`}>
                   <td colSpan={4}>
                   <div className={styles.projectDetails}>
                     <p className={styles.description}>{project.description}</p>

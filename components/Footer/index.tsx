@@ -14,7 +14,7 @@ const Footer = () => {
         </div>
         <div className={styles.divider}></div>
         <div className={styles.bottomSection}>
-          <div className={styles.credit}>Jimmy Lam | Ver. 2025</div>
+          <div className={styles.credit}>Jimmy Lam | 2025</div>
           <div className={styles.love}>cODeD wITh lOvE</div>
         </div>
       </div>

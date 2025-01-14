@@ -22,7 +22,8 @@
 
 .projectsTable tbody tr {
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.8s cubic-bezier(0.76, 0, 0.24, 1);
+  will-change: transform, background-color;
 }
 
 .projectsTable tbody tr:hover:not(.expandedContent) {
@@ -30,7 +31,8 @@
 }
 
 .projectName {
-  transition: transform 0.3s ease;
+  transition: transform 0.8s cubic-bezier(0.76, 0, 0.24, 1);
+  will-change: transform;
 }
 
 .projectsTable tbody tr:hover .projectName {
@@ -39,26 +41,74 @@
 
 .expanded {
   background-color: var(--gray-alpha-300);
+  transform: scale(1.02);
 }
 
 .expandedContent {
   background-color: var(--gray-alpha-300);
   cursor: default;
+  overflow: hidden;
+  transform-origin: top;
+  will-change: transform, opacity;
+  animation: expandContent 0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+
+.expandedContent.closing {
+  animation: closeContent 0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+
+@keyframes expandContent {
+  0% {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+@keyframes closeContent {
+  0% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scaleY(0);
+    opacity: 0;
+  }
 }
 
 .projectDetails {
   padding: 2rem 0;
-  animation: slideDown 0.3s ease forwards;
+  animation: revealContent 0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+  transform-origin: top;
+  will-change: transform, opacity;
 }
 
-@keyframes slideDown {
-  from {
+.closing .projectDetails {
+  animation: hideContent 0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+
+@keyframes revealContent {
+  0% {
     opacity: 0;
-    transform: translateY(-10px);
+    transform: translateY(30px);
   }
-  to {
+  100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes hideContent {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-30px);
   }
 }
 
@@ -67,12 +117,20 @@
   line-height: 1.4;
   margin-bottom: 2rem;
   max-width: 80%;
+  opacity: 0;
+  animation: fadeSlideUp 0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+  animation-delay: 0.1s;
+  will-change: transform, opacity;
 }
 
 .tags {
   display: flex;
   gap: 1rem;
   margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeSlideUp 0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+  animation-delay: 0.2s;
+  will-change: transform, opacity;
 }
 
 .tag {
@@ -93,11 +151,16 @@
   color: var(--foreground);
   text-decoration: none;
   margin-bottom: 2rem;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+  opacity: 0;
+  animation: fadeSlideUp 0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+  animation-delay: 0.3s;
+  will-change: transform, opacity, background-color;
 }
 
 .websiteButton:hover {
   background-color: var(--gray-alpha-100);
+  transform: translateY(-2px);
 }
 
 .imageGrid {
@@ -105,6 +168,10 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
   margin-top: 2rem;
+  opacity: 0;
+  animation: fadeSlideUp 0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+  animation-delay: 0.4s;
+  will-change: transform, opacity;
 }
 
 .imageContainer {
@@ -116,4 +183,15 @@
   width: 100%;
   height: 100%;
   background-color: var(--gray-alpha-100);
+}
+
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
