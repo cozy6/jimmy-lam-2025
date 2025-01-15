@@ -52,7 +52,7 @@ const placeholderProjects: Project[] = [
 export default function ProjectsTable() {
   const [expandedProject, setExpandedProject] = useState<number | null>(null);
   const [closingProject, setClosingProject] = useState<number | null>(null);
-  const timeoutRef = useRef<NodeJS.Timeout>();
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const toggleProject = (projectId: number) => {
     if (expandedProject === projectId) {
